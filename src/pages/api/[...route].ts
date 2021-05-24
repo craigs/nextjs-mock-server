@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { findService } from '../../lib/findService'
+import { findService } from '~lib/findService'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const service = await findService(req)
