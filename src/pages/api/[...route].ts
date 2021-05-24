@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { findService } from '~lib/findService'
+import { findService, serviceName } from '~lib'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const service = await findService(req)
@@ -8,7 +8,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     res
       .status(501)
       .json({
-        message: 'the requested handler was not found'
+        message: 'the requested handler was not found',
+        route: req.url,
+        service: serviceName(req)
       })
 
     return
